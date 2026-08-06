@@ -66,5 +66,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localização para registrar a inspeção de campo.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Precisamos do acesso à câmera para fotografar o local da inspeção.</string>
 </dict>
 </plist>
