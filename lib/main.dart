@@ -1,5 +1,8 @@
-import 'package:desafio_orbytis/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
+
+import 'features/auth/presentation/pages/login_page.dart';
+import 'features/inspection/presentation/pages/inspection_form_page.dart';
+import 'features/service_orders/presentation/pages/service_orders_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext me) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Inspeção de Campo',
       debugShowCheckedModeBanner: false,
@@ -33,13 +36,21 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      // TODO: Redirecionar baseado no estado de autenticação (logado ou não)
       initialRoute: '/login',
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/service-orders': (context) => const Scaffold(
-              body: Center(child: Text('Tela de Ordens de Serviço')),
-            ),
+      onGenerateRoute: (settings) {
+        if (settings.name == '/login') {
+          return MaterialPageRoute(builder: (_) => const LoginPage());
+        }
+        if (settings.name == '/service-orders') {
+          return MaterialPageRoute(builder: (_) => const ServiceOrdersPage());
+        }
+        if (settings.name == '/inspection-form') {
+          final serviceOrderId = settings.arguments as String? ?? 'OS-0000';
+          return MaterialPageRoute(
+            builder: (_) => InspectionFormPage(serviceOrderId: serviceOrderId),
+          );
+        }
+        return null;
       },
     );
   }
