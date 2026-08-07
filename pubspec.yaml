@@ -45,10 +45,12 @@ dependencies:
   # Conectividade e Persistência Local (exemplo com Hive ou Isar/Sqflite)
   connectivity_plus: ^6.1.0
   shared_preferences: ^2.3.0
+  
 
   isar: ^3.1.0
   isar_flutter_libs: ^3.1.0
   path_provider: ^2.1.2
+  dio: ^5.11.0
 
 dev_dependencies:
   flutter_test:
