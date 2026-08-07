@@ -3,9 +3,16 @@ import 'package:flutter/material.dart';
 import 'features/auth/presentation/pages/login_page.dart';
 import 'features/inspection/presentation/pages/inspection_form_page.dart';
 import 'features/service_orders/presentation/pages/service_orders_page.dart';
+import 'core/services/database_service.dart';
 
-void main() {
+late final DatabaseService databaseService;
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Inicializa o banco de dados Isar
+  databaseService = DatabaseService();
+  await databaseService.init();
+  
   runApp(const MyApp());
 }
 
